@@ -1,3 +1,0 @@
-main.com.myApp.controller.HomeController=org.springframework.stereotype.Component
-main.com.myApp.dao.DatabaseOperation=org.springframework.stereotype.Component
-main.com.myApp.model.User=org.springframework.stereotype.Component
