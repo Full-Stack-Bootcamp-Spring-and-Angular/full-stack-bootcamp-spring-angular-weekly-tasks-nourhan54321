@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- Define your beans here -->
+    <bean id="draw2dBean"
+          class="com.example1.Draw2d">
+    </bean>
+    <bean id="draw3dBean"
+          class="com.example1.Draw3d">
+    </bean>
+
+    <bean id="circle"
+          class="com.example1.CircleShape">
+        <constructor-arg ref="draw3dBean"/>
+        <constructor-arg ref="draw2dBean"/>
+
+    </bean>
+
+
+
+    <bean id="square"
+          class="com.example1.SquareShape">
+         <property name="draw2d" ref="draw2dBean"/>
+        <property name="draw3d" ref="draw3dBean"/>
+    </bean>
+    <context:property-placeholder location="classpath:application.properties"/>
+    <bean id="dboperation" class="com.vehicle.dbOperations">
+        <property name="url" value="${database.url}"/>
+        <property name="password" value="${database.password}"/>
+        <property name="username" value="${database.username}"/>
+
+    </bean>
+    <bean id="car" class="com.vehicle.Car">
+        <constructor-arg ref="dboperation"/>
+    </bean>
+    <bean id="plane" class="com.vehicle.Plane">
+        <property name="db" ref="dboperation"/>
+    </bean>
+
+</beans>
+
+
+
+
+
