@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<h1>Add new Product</h1>
+
+<form th:action="@{/addProduct}" th:object="${productModel}" method="post">
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <h3>Add Product</h3>
+                </div>
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label>Product Name</label>
+                    <input type="text" class="form-control" th:field="*{name}" placeholder="Enter product name">
+                    <div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                </div>
+
+                <!-- Expiration Date -->
+                <div class="form-group">
+                    <label>Expiration Date</label>
+                    <input type="text" class="form-control" th:field="*{expirationDate}" placeholder="dd/mm/yyyy">
+                    <div class="text-danger" th:if="${#fields.hasErrors('expirationDate')}" th:errors="*{expirationDate}"></div>
+                </div>
+
+                <!-- Manufacturer -->
+                <div class="form-group">
+                    <label>Manufacturer</label>
+                    <input type="text" class="form-control" th:field="*{manufacturer}" placeholder="Manufacturer">
+                    <div class="text-danger" th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}"></div>
+                </div>
+
+                <!-- Price -->
+                <div class="form-group">
+                    <label>Price</label>
+                    <input type="text" class="form-control" th:field="*{price}" placeholder="Price">
+                    <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+                </div>
+
+                <!-- Available -->
+                <div class="form-group">
+                    <label>Availability</label>
+                    <input type="text" class="form-control" th:field="*{available}" placeholder="0 or 1">
+                    <div class="text-danger" th:if="${#fields.hasErrors('available')}" th:errors="*{available}"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+</body>
+</html>

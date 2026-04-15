@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<h1>Products Data</h1>
+
+<div class="tbl-div">
+
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Show Details</th>
+            <th>Add/Update</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="item : ${productsList}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+
+            <td>
+                <form action="/showProductDetails" method="get">
+                    <button class="btn btn-primary">View Details</button>
+                </form>
+            </td>
+
+            <td>
+                <form action="/updateProduct" method="get">
+                    <button class="btn btn-warning">Add/Update</button>
+                </form>
+            </td>
+
+            <td>
+                <form action="/deleteProduct" method="post">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <form action="/addProduct" method="get">
+        <button class="btn btn-success">Add new Product</button>
+    </form>
+
+</div>
+
+</body>
+</html>
